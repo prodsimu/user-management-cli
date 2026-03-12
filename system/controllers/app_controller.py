@@ -46,3 +46,12 @@ class AppController:
 
     def list_users(self) -> list[User]:
         return self.user_service.list_users()
+
+    # UPDATE
+
+    # DELETE
+
+    # AUTHENTICATION
+
+    def login(self, username: str, password: str) -> Optional[Session]:
+        return self.session_service.login(username, password)
