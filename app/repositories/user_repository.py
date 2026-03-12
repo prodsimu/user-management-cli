@@ -1,8 +1,8 @@
 from typing import List
 
-from models.user import User
-from database.database import Database
-from repositories.base_repository import BaseRepository
+from app.database.database import Database
+from app.models.user import User
+from app.repositories.base_repository import BaseRepository
 
 
 class UserRepository(BaseRepository):

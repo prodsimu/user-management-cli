@@ -1,10 +1,10 @@
 from typing import Optional
 
-from models.session import Session
-from models.user import User
-from seed.seed import Seed
-from services.session_service import SessionService
-from services.user_service import UserService
+from app.models.session import Session
+from app.models.user import User
+from app.seed.seed import Seed
+from app.services.session_service import SessionService
+from app.services.user_service import UserService
 
 
 class AppController:

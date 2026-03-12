@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from exceptions.exceptions import (
+from app.exceptions.exceptions import (
     EmptyLoginCredentialsError,
     InactiveUserError,
     InvalidNameError,
@@ -13,12 +13,11 @@ from exceptions.exceptions import (
     UsernameAlreadyExistsError,
     UserNotFoundError,
 )
-from models.session import Session
-from models.user import User
-from repositories.user_repository import UserRepository
-from security.password_hasher import PasswordHasher
-
-from services.session_service import SessionService
+from app.models.session import Session
+from app.models.user import User
+from app.repositories.user_repository import UserRepository
+from app.security.password_hasher import PasswordHasher
+from app.services.session_service import SessionService
 
 
 class UserService:

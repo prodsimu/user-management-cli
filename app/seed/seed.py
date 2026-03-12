@@ -1,7 +1,7 @@
 from typing import Optional
 
-from models.user import User
-from services.user_service import UserService
+from app.models.user import User
+from app.services.user_service import UserService
 
 
 class Seed:

@@ -1,6 +1,7 @@
 from typing import Optional
-from repositories.session_repository import SessionRepository
-from models.session import Session
+
+from app.models.session import Session
+from app.repositories.session_repository import SessionRepository
 
 
 class SessionService:

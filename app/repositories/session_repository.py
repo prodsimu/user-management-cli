@@ -1,7 +1,8 @@
 from typing import Optional
-from models.session import Session
-from database.database import Database
-from repositories.base_repository import BaseRepository
+
+from app.database.database import Database
+from app.models.session import Session
+from app.repositories.base_repository import BaseRepository
 
 
 class SessionRepository(BaseRepository):

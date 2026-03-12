@@ -1,8 +1,7 @@
-from controllers.app_controller import AppController
-
+from app.controllers.app_controller import AppController
+from app.ui.menus import Menu
+from app.ui.prompts import Prompt
 from app.utils.terminal import clear_screen
-from ui.menus import Menu
-from ui.prompts import Prompt
 
 
 class CLI:

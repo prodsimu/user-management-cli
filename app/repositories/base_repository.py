@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from database.database import Database
+from app.database.database import Database
 
 
 class BaseRepository:
