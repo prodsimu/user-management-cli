@@ -60,3 +60,6 @@ class AppController:
 
     def has_active_session(self) -> bool:
         return self.current_session is not None
+
+    def is_admin(self) -> bool:
+        return self.current_user is not None and self.current_user.role == "admin"
