@@ -9,3 +9,6 @@ class CLI:
         self.controller = controller
         self.running: bool = True
         self.flash_message: str | None = None
+
+    def start_app(self) -> None:
+        self.controller.bootstrap()
