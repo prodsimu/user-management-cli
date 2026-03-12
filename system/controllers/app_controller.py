@@ -1,10 +1,5 @@
 from typing import Optional
-from models.session import Session
-from models.user import User
-from services.user_service import UserService
-from services.session_service import SessionService
-from seed.seed import Seed
-from ui.menu import Menu
+
 from exceptions.exceptions import (
     AppError,
     InactiveUserError,
@@ -12,6 +7,12 @@ from exceptions.exceptions import (
     SamePasswordError,
     UserNotFoundError,
 )
+from models.session import Session
+from models.user import User
+from seed.seed import Seed
+from services.session_service import SessionService
+from services.user_service import UserService
+from ui.menu import Menu
 
 
 class AppController:
@@ -22,7 +23,7 @@ class AppController:
         session_service: SessionService,
     ) -> None:
         self.runnig: bool = True
-        self.first_system_startup: bool = True
+        self.system_startup: bool = True
         self.last_message: Optional[str] = None
         self.user_service: UserService = user_service
         self.session_service: SessionService = session_service
@@ -54,10 +55,10 @@ class AppController:
 
     def main_loop(self) -> None:
 
-        if self.first_system_startup:
+        if self.system_startup:
             self.menu.clear_screen()
             self.last_message = self.menu.start_app()
-            self.first_system_startup = False
+            self.system_startup = False
 
         while self.runnig:
 
