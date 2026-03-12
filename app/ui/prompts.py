@@ -1,7 +1,7 @@
 class Prompt:
 
     @staticmethod
-    def get_choice(self, valid_options: list) -> int:
+    def get_choice(valid_options: list) -> int:
         choice = None
 
         while choice not in valid_options:
