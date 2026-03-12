@@ -1,6 +1,7 @@
 from app.controllers.app_controller import AppController
 from app.ui.menus import Menu
 from app.ui.prompts import Prompt
+from app.utils import clear_screen
 
 
 class CLI:
@@ -23,4 +24,13 @@ class CLI:
         self.flash_message = Menu.start_app()
 
         while self.running:
-            pass
+
+            clear_screen()
+            self._show_flash_message()
+
+    # MAIN LOOP ACTIONS
+
+    def _show_flash_message(self) -> None:
+        if self.flash_message:
+            print(self.flash_message, end="")
+            self.flash_message = None
