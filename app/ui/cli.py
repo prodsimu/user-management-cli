@@ -1,6 +1,6 @@
 from controllers.app_controller import AppController
-from utils import clear_screen
 
+from app.utils.terminal import clear_screen
 from ui.menus import Menu
 from ui.prompts import Prompt
 
