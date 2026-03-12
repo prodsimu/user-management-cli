@@ -35,3 +35,11 @@ class AppController:
 
     def create_user(self, name: str, username: str, password: str) -> User:
         self.user_service.create_user(name, username, password)
+
+    # READ
+
+    def get_current_user(self) -> Optional[User]:
+        if self.current_session:
+            return self.user_service.get_user_by_id(self.current_session.user_id)
+
+        return None
