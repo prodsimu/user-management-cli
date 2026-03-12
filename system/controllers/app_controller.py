@@ -43,3 +43,6 @@ class AppController:
             return self.user_service.get_user_by_id(self.current_session.user_id)
 
         return None
+
+    def list_users(self) -> list[User]:
+        return self.user_service.list_users()
