@@ -55,3 +55,8 @@ class AppController:
 
     def login(self, username: str, password: str) -> Optional[Session]:
         return self.session_service.login(username, password)
+
+    # UTILS
+
+    def has_active_session(self) -> bool:
+        return self.current_session is not None
