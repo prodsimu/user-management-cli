@@ -47,3 +47,11 @@ class CLI:
 
         else:
             return Menu.user_menu()
+
+    # HELPER
+
+    def _execute(self, action):
+        try:
+            action()
+        except Exception as e:
+            self.flash_message = Menu.show_error(str(e))
