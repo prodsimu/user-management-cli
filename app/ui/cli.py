@@ -12,3 +12,6 @@ class CLI:
 
     def start_app(self) -> None:
         self.controller.bootstrap()
+
+    def shutdown_app(self) -> None:
+        self.running = False
