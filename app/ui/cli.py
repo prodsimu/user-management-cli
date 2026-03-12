@@ -15,3 +15,12 @@ class CLI:
 
     def shutdown_app(self) -> None:
         self.running = False
+
+    # MAIN LOOP
+
+    def main_loop(self) -> None:
+
+        self.flash_message = Menu.start_app()
+
+        while self.running:
+            pass
