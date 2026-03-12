@@ -1,7 +1,8 @@
-from app.controllers.app_controller import AppController
-from app.ui.menus import Menu
-from app.ui.prompts import Prompt
-from app.utils import clear_screen
+from controllers.app_controller import AppController
+from utils import clear_screen
+
+from ui.menus import Menu
+from ui.prompts import Prompt
 
 
 class CLI:
@@ -28,9 +29,21 @@ class CLI:
             clear_screen()
             self._show_flash_message()
 
+            print(self._get_current_menu(), end="")
+
     # MAIN LOOP ACTIONS
 
     def _show_flash_message(self) -> None:
         if self.flash_message:
             print(self.flash_message, end="")
             self.flash_message = None
+
+    def _get_current_menu(self) -> str:
+        if not self.controller.has_active_session():
+            return Menu.public_menu()
+
+        elif self.controller.is_admin():
+            return Menu.admin_menu()
+
+        else:
+            return Menu.user_menu()
