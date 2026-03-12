@@ -1,10 +1,11 @@
 import os
+
 from models.user import User
 
 
 class Menu:
 
-    def start_app(self) -> None:
+    def start_app(self) -> str:
         return (
             "=== SYSTEM INITIALIZED ===\n"
             "Admin created automatically:\n"
@@ -13,37 +14,35 @@ class Menu:
             "Logging in...\n"
         )
 
-    def admin_menu(self) -> None:
-        print("=== ADMIN MENU ===")
-        print("1 - Create user")
-        print("2 - List users")
-        print("3 - Update user")
-        print("4 - Delete User")
-        print("0 - Logout")
+    def admin_menu(self) -> str:
+        return (
+            "=== ADMIN MENU ===\n"
+            "1 - Create user\n"
+            "2 - List users\n"
+            "3 - Update user\n"
+            "4 - Delete User\n"
+            "0 - Logout\n"
+        )
 
-    def user_menu(self) -> None:
-        print("=== USER MENU ===")
-        print("1 - Change password")
-        print("0 - Logout")
+    def user_menu(self) -> str:
+        return "=== USER MENU ===\n" "1 - Change password\n" "0 - Logout\n"
 
-    def public_menu(self) -> None:
-        print("=== PUBLIC MENU ===")
-        print("1 - Login")
-        print("0 - Exit")
+    def public_menu(self) -> str:
+        return "=== PUBLIC MENU ===\n" "1 - Login\n" "0 - Exit\n"
 
     def logout_message(self) -> str:
         return "Exiting session..."
 
-    def shutdown_message(self) -> None:
-        print("Shutting down system...")
+    def shutdown_message(self) -> str:
+        return "Shutting down system..."
 
-    def login_interface(self) -> str:
+    def login_interface(self) -> tuple[str, str]:
         username = input("Username: ")
         password = input("Password: ")
 
         return username, password
 
-    def get_user_data_to_creation(self) -> str:
+    def get_user_data_to_creation(self) -> tuple[str, str, str]:
         name = input("Name: ")
         username = input("Username: ")
         password = input("Password: ")
@@ -68,11 +67,13 @@ class Menu:
             "------------------------------"
         )
 
-    def update_user_interface(self) -> None:
-        print("1 - Update name")
-        print("2 - Update username")
-        print("3 - Update password")
-        print("4 - Change role")
-        print("5 - Activate/Deactivate")
-        print("6 - Reset login attempts")
-        print("0 - Cancel")
+    def update_user_interface(self) -> str:
+        return (
+            "1 - Update name\n"
+            "2 - Update username\n"
+            "3 - Update password\n"
+            "4 - Change role\n"
+            "5 - Activate/Deactivate\n"
+            "6 - Reset login attempts\n"
+            "0 - Cancel\n"
+        )
