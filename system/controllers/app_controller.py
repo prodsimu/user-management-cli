@@ -30,3 +30,8 @@ class AppController:
         if admin:
             self.current_user = admin
             self.current_session = self.session_service.create_session(admin.id)
+
+    # CREATE
+
+    def create_user(self, name: str, username: str, password: str) -> User:
+        self.user_service.create_user(name, username, password)
