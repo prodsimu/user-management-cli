@@ -54,7 +54,12 @@ class AppController:
     # AUTHENTICATION
 
     def login(self, username: str, password: str) -> Optional[Session]:
-        return self.session_service.login(username, password)
+        session = self.user_service.login(username, password)
+
+        self.current_session = session
+        self.current_user = self.user_service.get_user_by_id(session.user_id)
+
+        return session
 
     # UTILS
 
