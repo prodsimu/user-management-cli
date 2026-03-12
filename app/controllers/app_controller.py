@@ -34,7 +34,7 @@ class AppController:
     # CREATE
 
     def create_user(self, name: str, username: str, password: str) -> User:
-        self.user_service.create_user(name, username, password)
+        return self.user_service.create_user(name, username, password)
 
     # READ
 
