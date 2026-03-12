@@ -1,5 +1,4 @@
 from typing import Any
-from security.password_hasher import PasswordHasher
 
 
 class User:
