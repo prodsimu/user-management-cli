@@ -97,3 +97,7 @@ class Menu:
     @staticmethod
     def user_created_message() -> str:
         return "User created successfully.\n\n"
+
+    @staticmethod
+    def user_deleted_message() -> str:
+        return "User deleted successfully.\n\n"
