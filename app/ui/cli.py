@@ -275,6 +275,11 @@ class CLI:
 
         def action():
             user_id = Prompt.get_int_input("User ID: ")
+
+            if self.controller.current_user.id == user_id:
+                self.flash_message = Menu.show_error("You cannot delete your own user.")
+                return
+
             self.controller.delete_user(user_id)
             self.flash_message = Menu.user_deleted_message()
 
