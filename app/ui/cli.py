@@ -203,6 +203,11 @@ class CLI:
 
         def action():
             user_id = Prompt.get_int_input("User ID: ")
+
+            if self.controller.current_user.id == user_id:
+                self.flash_message = Menu.show_error("You cannot change your own role.")
+                return
+
             new_role = Prompt.get_input("New role: ")
             self.controller.update_role(user_id, new_role)
             self.flash_message = Menu.role_updated_message()
