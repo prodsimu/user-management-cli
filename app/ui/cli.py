@@ -1,7 +1,4 @@
-from calendar import c
-
 from app.controllers.app_controller import AppController
-from app.models import user
 from app.ui.menus import Menu
 from app.ui.prompts import Prompt
 from app.utils.terminal import clear_screen
