@@ -87,6 +87,18 @@ class CLI:
             case 4:
                 pass
 
+    # AUTHENTICATION
+
+    def _handle_login(self) -> None:
+        username = Prompt.ask_username()
+        password = Prompt.ask_password()
+
+        def action():
+            self.controller.login(username, password)
+            self.flash_message = Menu.logged_in_message()
+
+        self._execute(action)
+
     # HELPER
 
     def _execute(self, action):
