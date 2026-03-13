@@ -9,10 +9,11 @@ class Menu:
     def admin_menu() -> str:
         return (
             "=== ADMIN MENU ===\n"
-            "1 - Create user\n"
-            "2 - List users\n"
-            "3 - Update user\n"
-            "4 - Delete User\n"
+            "1 - Update own password\n"
+            "2 - Create user\n"
+            "3 - List users\n"
+            "4 - Update user\n"
+            "5 - Delete User\n"
             "0 - Logout\n"
         )
 
