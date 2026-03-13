@@ -23,3 +23,11 @@ class Prompt:
             user_input = input(prompt_message).strip()
 
         return user_input
+
+    @staticmethod
+    def get_int_input(prompt_message: str) -> int:
+        while True:
+            try:
+                return int(input(prompt_message))
+            except ValueError:
+                print("\nEnter a valid integer\n")
