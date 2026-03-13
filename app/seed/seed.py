@@ -10,7 +10,7 @@ class Seed:
         self.user_service: UserService = user_service
 
     def run_seed(self) -> Optional[User]:
-        if self.user_service.list_users():
+        if self.user_service.list_all_users():
             return None
 
         admin = self.user_service.create_user("admin", "admin", "admin123")
