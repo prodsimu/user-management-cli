@@ -227,6 +227,15 @@ class CLI:
 
         self._execute(action)
 
+    def _handle_reset_login_attempts(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            self.controller.reset_login_attempts(user_id)
+            self.flash_message = Menu.login_attempts_reset_message()
+
+        self._execute(action)
+
     # DELETE
 
     def _handle_delete_user(self) -> None:
