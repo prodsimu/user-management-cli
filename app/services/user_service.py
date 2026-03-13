@@ -81,7 +81,7 @@ class UserService:
 
         return self.user_repository.get_by_field("username", username)
 
-    def list_users(self) -> List[User]:
+    def list_all_users(self) -> List[User]:
         return self.user_repository.get_all()
 
     def list_active_users(self) -> List[User]:
