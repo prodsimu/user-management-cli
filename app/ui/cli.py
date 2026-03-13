@@ -13,6 +13,7 @@ class CLI:
 
     def start_app(self) -> None:
         self.controller.bootstrap()
+        self.main_loop()
 
     def shutdown_app(self) -> None:
         self.running = False
@@ -46,6 +47,19 @@ class CLI:
 
         else:
             return Menu.user_menu()
+
+    # FLOWS
+
+    def _handle_public_flow(self) -> None:
+        choice = Prompt.get_choice([0, 1])
+
+        match choice:
+
+            case 0:
+                pass
+
+            case 1:
+                pass
 
     # HELPER
 
