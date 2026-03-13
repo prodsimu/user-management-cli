@@ -68,6 +68,10 @@ class Menu:
     def show_error(message: str) -> str:
         return f"{message}\n\n"
 
+    @staticmethod
+    def password_do_not_match_message() -> str:
+        return "Passwords do not match.\n\n"
+
     # DATA DISPLAY
 
     @staticmethod
