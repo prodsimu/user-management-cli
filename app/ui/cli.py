@@ -71,7 +71,7 @@ class CLI:
             case 3:
                 self._handle_list_all_users()
             case 4:
-                self._handle_update_role()
+                self._handle_update_user_flow()
             case 5:
                 self._handle_delete_user()
 
@@ -235,6 +235,34 @@ class CLI:
             self.flash_message = Menu.login_attempts_reset_message()
 
         self._execute(action)
+
+    # UPDATE FLOW
+
+    def _handle_update_user_flow(self) -> None:
+        clear_screen()
+
+        print(Menu.update_user_menu(), end="")
+
+        choice = Prompt.get_choice([0, 1, 2, 3, 4, 5, 6, 7])
+
+        match choice:
+
+            case 0:
+                return
+            case 1:
+                self._handle_update_name()
+            case 2:
+                self._handle_update_username()
+            case 3:
+                self._handle_update_password()
+            case 4:
+                self._handle_update_role()
+            case 5:
+                self._handle_reset_login_attempts()
+            case 6:
+                self._handle_activate_user()
+            case 7:
+                self._handle_deactivate_user()
 
     # DELETE
 
