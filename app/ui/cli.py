@@ -71,7 +71,7 @@ class CLI:
             case 3:
                 self._handle_list_all_users()
             case 4:
-                pass
+                self._handle_update_password()
             case 5:
                 self._handle_delete_user()
 
@@ -180,6 +180,22 @@ class CLI:
             new_username = Prompt.get_input("New username: ")
             self.controller.update_username(user_id, new_username)
             self.flash_message = Menu.username_updated_message()
+
+        self._execute(action)
+
+    def _handle_update_password(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            new_password = Prompt.get_input("New password: ")
+            confirm_password = Prompt.get_input("Confirm new password: ")
+
+            if new_password != confirm_password:
+                self.flash_message = Menu.password_do_not_match_message()
+                return
+
+            self.controller.update_password(user_id, new_password)
+            self.flash_message = Menu.password_updated_message()
 
         self._execute(action)
 
