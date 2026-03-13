@@ -99,8 +99,8 @@ class CLI:
     # AUTHENTICATION
 
     def _handle_login(self) -> None:
-        username = Prompt.ask_username()
-        password = Prompt.ask_password()
+        username = Prompt.get_input("Username: ")
+        password = Prompt.get_input("Password: ")
 
         def action():
             self.controller.login(username, password)
