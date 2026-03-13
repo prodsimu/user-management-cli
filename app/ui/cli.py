@@ -61,6 +61,16 @@ class CLI:
             case 1:
                 pass
 
+    def _handle_user_flow(self) -> None:
+        choice = Prompt.get_choice([0, 1])
+
+        match choice:
+
+            case 0:
+                pass
+            case 1:
+                pass
+
     # HELPER
 
     def _execute(self, action):
