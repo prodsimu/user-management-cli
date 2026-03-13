@@ -44,7 +44,7 @@ class AppController:
 
         return None
 
-    def list_users(self) -> list[User]:
+    def list_all_users(self) -> list[User]:
         return self.user_service.list_users()
 
     # UPDATE
