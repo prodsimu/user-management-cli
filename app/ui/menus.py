@@ -47,7 +47,7 @@ class Menu:
             "Admin created automatically:\n"
             "username: admin\n"
             "password: admin123\n"
-            "Logging in...\n"
+            "Logging in...\n\n"
         )
 
     @staticmethod
@@ -56,11 +56,11 @@ class Menu:
 
     @staticmethod
     def logout_message() -> str:
-        return "Exiting session..."
+        return "Exiting session...\n\n"
 
     @staticmethod
     def logged_in_message() -> str:
-        return "Logged in successfully."
+        return "Logged in successfully.\n\n"
 
     # ERROR MESSAGES
 
@@ -80,5 +80,5 @@ class Menu:
             f"Role --------- {user.role}\n"
             f"Active ------- {user.active}\n"
             f"Login Attempts {user.login_attempts}\n"
-            "------------------------------"
+            "------------------------------\n"
         )
