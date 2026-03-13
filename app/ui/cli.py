@@ -60,7 +60,7 @@ class CLI:
                 self._handle_update_own_password()
 
     def _handle_admin_flow(self) -> None:
-        choice = Prompt.get_choice([0, 1, 2, 3, 4])
+        choice = Prompt.get_choice([0, 1, 2, 3, 4, 5])
 
         match choice:
 
@@ -75,7 +75,7 @@ class CLI:
             case 4:
                 pass
             case 5:
-                pass
+                self._handle_delete_user()
 
     # MAIN LOOP ACTIONS
 
@@ -161,3 +161,12 @@ class CLI:
         self._execute(action)
 
     # DELETE
+
+    def _handle_delete_user(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            self.controller.delete_user(user_id)
+            self.flash_message = Menu.user_deleted_message()
+
+        self._execute(action)
