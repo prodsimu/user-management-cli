@@ -61,6 +61,13 @@ class AppController:
 
         return session
 
+    def logout(self) -> None:
+        if self.current_session:
+            self.session_service.logout(self.current_session.id)
+
+        self.current_session = None
+        self.current_user = None
+
     # UTILS
 
     def has_active_session(self) -> bool:
