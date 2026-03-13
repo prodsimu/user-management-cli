@@ -93,11 +93,6 @@ class Menu:
 
     @staticmethod
     def user_created_message() -> str:
-
-    @staticmethod
-    def password_updated_message() -> str:
-        return "Password updated successfully.\n\n"
-
         return "User created successfully.\n\n"
 
     ## UPDATE
@@ -109,6 +104,14 @@ class Menu:
     @staticmethod
     def username_updated_message() -> str:
         return "Username updated successfully.\n\n"
+
+    @staticmethod
+    def password_updated_message() -> str:
+        return "Password updated successfully.\n\n"
+
+    @staticmethod
+    def role_updated_message() -> str:
+        return "Role updated successfully.\n\n"
 
     ## DELETE
 
