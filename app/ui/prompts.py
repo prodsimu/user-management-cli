@@ -8,9 +8,9 @@ class Prompt:
             try:
                 choice = int(input("Choose an option: "))
                 if choice not in valid_options:
-                    print("\nChoose a valid option\n")
+                    print("\nChoose a valid option.\n")
             except ValueError:
-                print("\nChoose a valid option\n")
+                print("\nChoose a valid option.\n")
 
         return choice
 
@@ -19,7 +19,7 @@ class Prompt:
         user_input = input(prompt_message).strip()
 
         while not user_input:
-            print("\nInput cannot be empty\n")
+            print("\nInput cannot be empty.\n")
             user_input = input(prompt_message).strip()
 
         return user_input
@@ -30,4 +30,4 @@ class Prompt:
             try:
                 return int(input(prompt_message))
             except ValueError:
-                print("\nEnter a valid integer\n")
+                print("\nEnter a valid integer.\n")
