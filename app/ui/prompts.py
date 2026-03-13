@@ -23,3 +23,7 @@ class Prompt:
             user_input = input(prompt_message).strip()
 
         return user_input
+
+    @staticmethod
+    def ask_username() -> str:
+        return Prompt.get_input("Username: ")
