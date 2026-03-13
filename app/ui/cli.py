@@ -1,6 +1,7 @@
 from calendar import c
 
 from app.controllers.app_controller import AppController
+from app.models import user
 from app.ui.menus import Menu
 from app.ui.prompts import Prompt
 from app.utils.terminal import clear_screen
@@ -162,6 +163,16 @@ class CLI:
                 self.controller.current_user.id, new_password
             )
             self.flash_message = Menu.password_updated_message()
+
+        self._execute(action)
+
+    def _handle_update_name(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            new_name = Prompt.get_input("New name: ")
+            self.controller.update_name(user_id, new_name)
+            self.flash_message = Menu.name_updated_message()
 
         self._execute(action)
 
