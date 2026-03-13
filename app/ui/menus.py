@@ -43,27 +43,8 @@ class Menu:
         return "Shutting down system..."
 
     @staticmethod
-    def login_interface() -> tuple[str, str]:
-        username = input("Username: ")
-        password = input("Password: ")
-
-        return username, password
-
-    @staticmethod
-    def get_user_data_to_creation() -> tuple[str, str, str]:
-        name = input("Name: ")
-        username = input("Username: ")
-        password = input("Password: ")
-
-        return name, username, password
-
-    @staticmethod
     def show_error(message: str) -> str:
         return f"{message}"
-
-    @staticmethod
-    def clear_screen():
-        os.system("cls" if os.name == "nt" else "clear")
 
     @staticmethod
     def show_user_description(user: User) -> str:
