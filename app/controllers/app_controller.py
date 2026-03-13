@@ -54,6 +54,9 @@ class AppController:
 
     # DELETE
 
+    def delete_user(self, user_id: int) -> None:
+        self.user_service.delete_user_by_id(user_id)
+
     # AUTHENTICATION
 
     def login(self, username: str, password: str) -> Optional[Session]:
