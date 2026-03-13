@@ -49,6 +49,9 @@ class AppController:
 
     # UPDATE
 
+    def update_password(self, user_id: int, new_password: str) -> None:
+        self.user_service.update_password_by_id(user_id, new_password)
+
     # DELETE
 
     # AUTHENTICATION
