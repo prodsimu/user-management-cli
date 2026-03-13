@@ -89,18 +89,29 @@ class Menu:
 
     # SUCCESS MESSAGES
 
+    ## CREATE
+
+    @staticmethod
+    def user_created_message() -> str:
+
     @staticmethod
     def password_updated_message() -> str:
         return "Password updated successfully.\n\n"
 
-    @staticmethod
-    def user_created_message() -> str:
         return "User created successfully.\n\n"
 
-    @staticmethod
-    def user_deleted_message() -> str:
-        return "User deleted successfully.\n\n"
+    ## UPDATE
 
     @staticmethod
     def name_updated_message() -> str:
         return "Name updated successfully.\n\n"
+
+    @staticmethod
+    def username_updated_message() -> str:
+        return "Username updated successfully.\n\n"
+
+    ## DELETE
+
+    @staticmethod
+    def user_deleted_message() -> str:
+        return "User deleted successfully.\n\n"
