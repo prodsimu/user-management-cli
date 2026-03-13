@@ -5,15 +5,7 @@ from app.models.user import User
 
 class Menu:
 
-    @staticmethod
-    def start_app() -> str:
-        return (
-            "=== SYSTEM INITIALIZED ===\n"
-            "Admin created automatically:\n"
-            "username: admin\n"
-            "password: admin123\n"
-            "Logging in...\n"
-        )
+    # MENUS MENUS
 
     @staticmethod
     def admin_menu() -> str:
@@ -34,17 +26,47 @@ class Menu:
     def public_menu() -> str:
         return "=== PUBLIC MENU ===\n" "1 - Login\n" "0 - Exit\n"
 
+    # SUBMENUS
+
     @staticmethod
-    def logout_message() -> str:
-        return "Exiting session..."
+    def update_user_menu() -> str:
+        return (
+            "1 - Update name\n"
+            "2 - Update username\n"
+            "3 - Update password\n"
+            "4 - Change role\n"
+            "5 - Activate/Deactivate\n"
+            "6 - Reset login attempts\n"
+            "0 - Cancel\n"
+        )
+
+    # SYSTEM MESSAGES
+
+    @staticmethod
+    def startup_message() -> str:
+        return (
+            "=== SYSTEM INITIALIZED ===\n"
+            "Admin created automatically:\n"
+            "username: admin\n"
+            "password: admin123\n"
+            "Logging in...\n"
+        )
 
     @staticmethod
     def shutdown_message() -> str:
         return "Shutting down system..."
 
     @staticmethod
+    def logout_message() -> str:
+        return "Exiting session..."
+
+    # ERROR MESSAGES
+
+    @staticmethod
     def show_error(message: str) -> str:
         return f"{message}"
+
+    # DATA DISPLAY
 
     @staticmethod
     def show_user_description(user: User) -> str:
@@ -57,16 +79,4 @@ class Menu:
             f"Active ------- {user.active}\n"
             f"Login Attempts {user.login_attempts}\n"
             "------------------------------"
-        )
-
-    @staticmethod
-    def update_user_interface() -> str:
-        return (
-            "1 - Update name\n"
-            "2 - Update username\n"
-            "3 - Update password\n"
-            "4 - Change role\n"
-            "5 - Activate/Deactivate\n"
-            "6 - Reset login attempts\n"
-            "0 - Cancel\n"
         )
