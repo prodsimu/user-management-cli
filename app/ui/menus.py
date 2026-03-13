@@ -1,3 +1,5 @@
+from turtle import st
+
 from app.models.user import User
 
 
@@ -120,6 +122,10 @@ class Menu:
     @staticmethod
     def user_deactivated_message() -> str:
         return "User deactivated successfully.\n\n"
+
+    @staticmethod
+    def login_attempts_reset_message() -> str:
+        return "Login attempts reset successfully.\n\n"
 
     ## DELETE
 
