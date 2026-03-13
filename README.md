@@ -1,88 +1,76 @@
-# User Management System (CLI)
+<div align="center">
+<h1>User Management CLI</h1>
+</div>
 
-## Overview
+## 👩‍💻 Tech Stack
+[![Python](https://img.shields.io/badge/Vanilla_Python-3776AB?style=for-the-badge&logo=python&logoColor=fff)](#)
 
-This project is a command-line User Management System built with Python.
+## 💡 Overview
 
-It simulates a simple backend structure within a terminal application and includes authentication, session management, role-based access control, and full CRUD operations for users.
+A Command-line user management system built with Vanilla Python.
 
-The main goal of this project was to practice organizing a medium-sized application using clear separation of responsibilities and clean code principles.
-
----
-
-## Features
-
-- User authentication
-- Session management
-- Role-based access (admin and regular user)
-- Create, read, update and delete users
-- Password validation rules
-- Login attempt tracking and reset
-- Centralized feedback handling inside the controller
-
----
-
-## Architecture
-
-The project follows a layered structure:
-
-### Controller
-Handles application flow and state management.  
-Coordinates between the UI and the service layer.
-
-### Service
-Contains business logic and validation rules.  
-Responsible for enforcing authentication and authorization rules.
-
-### Repository
-Abstracts data storage and provides CRUD operations.
-
-### UI
-Handles input/output and menu rendering.  
-Returns formatted messages instead of printing directly.
-
-### Domain Models
-Defines the main entities:
-- User
-- Session
-
-Each layer has a clear responsibility, which keeps the code organized and easier to maintain.
-
----
-
-## Error Handling
-
-The application uses custom exceptions to represent domain errors, such as:
-
-- InvalidPasswordError
-- UserNotFoundError
-- InactiveUserError
-- SamePasswordError
-- AppError (base exception)
-
-This approach keeps validation logic clean and avoids mixing error handling with presentation logic.
-
----
-
-## Technologies
-
-- Python 3
-- Object-Oriented Programming
-- Command-line interface
-- Standard library only
-
----
-
-## Possible Improvements
-
+## ✨ Features
+- User authentication system
+- Role-based access control (admin / user)
+- User management (CRUD)
 - Password hashing
-- Persistent storage (SQLite or JSON)
-- Unit tests
-- Logging
-- Dependency injection improvements
+- Automatic admin seeding
+- CLI interface with interactive menus
+- Custom exception handling
 
----
+## 🏗️ Architecture
 
-## Purpose
+The project follows a layered architecture:
 
-This project demonstrates the ability to structure a non-trivial Python application using backend design concepts in a CLI environment, with focus on organization, separation of concerns, and maintainability.
+- **UI** – CLI interface
+- **Controllers** – Application flow orchestration
+- **Services** – Business logic
+- **Repositories** – Data access layer
+- **Models** – Users and sessions
+
+## 📂 Project Structure
+
+```
+user-management-cli/
+├── app/
+│   ├── controllers/
+│   │   └── app_controller.py
+│   ├── database/
+│   │   └── database.py
+│   ├── exceptions/
+│   │   └── exceptions.py
+│   ├── models/
+│   │   ├── session.py
+│   │   └── user.py
+│   ├── repositories/
+│   │   ├── base_repository.py
+│   │   ├── session_repository.py
+│   │   └── user_repository.py
+│   ├── security/
+│   │   └── password_hasher.py
+│   ├── seed/
+│   │   └── seed.py
+│   ├── services/
+│   │   ├── session_service.py
+│   │   └── user_service.py
+│   ├── ui/
+│   │   ├── cli.py
+│   │   ├── menus.py
+│   │   └── prompts.py
+│   └── utils/
+│       └── terminal.py
+└── main.py
+```
+
+## 🛠️ Installation
+
+### 1. Clone the repository
+```
+git clone https://github.com/prodsimu/user-management-cli.git
+cd user-management-cli
+```
+
+### 2. Run the application
+```
+python main.py
+```
