@@ -71,6 +71,22 @@ class CLI:
             case 1:
                 pass
 
+    def _handle_admin_flow(self) -> None:
+        choice = Prompt.get_choice([0, 1, 2, 3, 4])
+
+        match choice:
+
+            case 0:
+                pass
+            case 1:
+                pass
+            case 2:
+                pass
+            case 3:
+                pass
+            case 4:
+                pass
+
     # HELPER
 
     def _execute(self, action):
