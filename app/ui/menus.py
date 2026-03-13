@@ -82,3 +82,9 @@ class Menu:
             f"Login Attempts {user.login_attempts}\n"
             "------------------------------\n"
         )
+
+    # SUCCESS MESSAGES
+
+    @staticmethod
+    def password_updated_message() -> str:
+        return "Password updated successfully.\n\n"
