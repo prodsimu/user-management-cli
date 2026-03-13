@@ -126,6 +126,9 @@ class UserService:
         if not new_username:
             raise InvalidUsernameError("Invalid username")
 
+        if user.username == new_username:
+            raise InvalidUsernameError("New username cannot be the same as current")
+
         if self.user_repository.exists_by_field("username", new_username):
             raise UsernameAlreadyExistsError("User already exists")
 
