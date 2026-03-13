@@ -1,3 +1,5 @@
+from calendar import c
+
 from app.controllers.app_controller import AppController
 from app.ui.menus import Menu
 from app.ui.prompts import Prompt
@@ -55,7 +57,7 @@ class CLI:
             case 0:
                 self._handle_logout()
             case 1:
-                pass
+                self._handle_update_own_password()
 
     def _handle_admin_flow(self) -> None:
         choice = Prompt.get_choice([0, 1, 2, 3, 4])
@@ -65,12 +67,14 @@ class CLI:
             case 0:
                 self._handle_logout()
             case 1:
-                pass
+                self._handle_update_own_password()
             case 2:
                 pass
             case 3:
                 pass
             case 4:
+                pass
+            case 5:
                 pass
 
     # MAIN LOOP ACTIONS
@@ -121,3 +125,28 @@ class CLI:
             action()
         except Exception as e:
             self.flash_message = Menu.show_error(str(e))
+
+    # CREATE
+
+    # READ
+
+    # UPDATE
+
+    def _handle_update_own_password(self) -> None:
+
+        def action():
+            new_password = Prompt.get_input("New password: ")
+            confirm_password = Prompt.get_input("Confirm new password: ")
+
+            if new_password != confirm_password:
+                self.flash_message = Menu.password_do_not_match_message()
+                return
+
+            self.controller.update_password(
+                self.controller.current_user.id, new_password
+            )
+            self.flash_message = Menu.password_updated_message()
+
+        self._execute(action)
+
+    # DELETE
