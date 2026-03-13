@@ -108,6 +108,10 @@ class CLI:
 
         self._execute(action)
 
+    def _handle_logout(self) -> None:
+        self.flash_message = Menu.logout_message()
+        self.controller.logout()
+
     # HELPER
 
     def _execute(self, action):
