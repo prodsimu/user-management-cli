@@ -13,3 +13,13 @@ class Prompt:
                 print("\nChoose a valid option\n")
 
         return choice
+
+    @staticmethod
+    def _get_input(prompt_message: str) -> str:
+        user_input = input(prompt_message).strip()
+
+        while not user_input:
+            print("\nInput cannot be empty\n")
+            user_input = input(prompt_message).strip()
+
+        return user_input
