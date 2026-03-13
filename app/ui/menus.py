@@ -66,7 +66,7 @@ class Menu:
 
     @staticmethod
     def show_error(message: str) -> str:
-        return f"{message}"
+        return f"{message}\n\n"
 
     # DATA DISPLAY
 
