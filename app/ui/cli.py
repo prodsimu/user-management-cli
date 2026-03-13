@@ -65,15 +65,15 @@ class CLI:
             case 0:
                 self._handle_logout()
             case 1:
-                self._handle_update_own_password()
-            case 2:
                 self._handle_create_user()
-            case 3:
+            case 2:
                 self._handle_list_all_users()
-            case 4:
+            case 3:
                 self._handle_update_user_flow()
-            case 5:
+            case 4:
                 self._handle_delete_user()
+            case 5:
+                self._handle_update_own_password()
 
     # MAIN LOOP ACTIONS
 
