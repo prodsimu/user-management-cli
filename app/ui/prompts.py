@@ -15,7 +15,7 @@ class Prompt:
         return choice
 
     @staticmethod
-    def _get_input(prompt_message: str) -> str:
+    def get_input(prompt_message: str) -> str:
         user_input = input(prompt_message).strip()
 
         while not user_input:
