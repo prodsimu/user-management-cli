@@ -22,7 +22,7 @@ class CLI:
 
     def main_loop(self) -> None:
 
-        self.flash_message = Menu.start_app()
+        self.flash_message = Menu.startup_message()
 
         while self.running:
 
@@ -30,23 +30,7 @@ class CLI:
             self._show_flash_message()
 
             print(self._get_current_menu(), end="")
-
-    # MAIN LOOP ACTIONS
-
-    def _show_flash_message(self) -> None:
-        if self.flash_message:
-            print(self.flash_message, end="")
-            self.flash_message = None
-
-    def _get_current_menu(self) -> str:
-        if not self.controller.has_active_session():
-            return Menu.public_menu()
-
-        elif self.controller.is_admin():
-            return Menu.admin_menu()
-
-        else:
-            return Menu.user_menu()
+            self._handle_current_flow()
 
     # FLOWS
 
@@ -86,6 +70,31 @@ class CLI:
                 pass
             case 4:
                 pass
+
+    # MAIN LOOP ACTIONS
+
+    def _show_flash_message(self) -> None:
+        if self.flash_message:
+            print(self.flash_message, end="")
+            self.flash_message = None
+
+    def _get_current_menu(self) -> str:
+        if not self.controller.has_active_session():
+            return Menu.public_menu()
+
+        elif self.controller.is_admin():
+            return Menu.admin_menu()
+
+        else:
+            return Menu.user_menu()
+
+    def _handle_current_flow(self) -> None:
+        if not self.controller.has_active_session():
+            self._handle_public_flow()
+        elif self.controller.is_admin():
+            self._handle_admin_flow()
+        else:
+            self._handle_user_flow()
 
     # AUTHENTICATION
 
