@@ -69,7 +69,7 @@ class CLI:
             case 1:
                 self._handle_update_own_password()
             case 2:
-                pass
+                self._handle_create_user()
             case 3:
                 pass
             case 4:
@@ -127,6 +127,17 @@ class CLI:
             self.flash_message = Menu.show_error(str(e))
 
     # CREATE
+
+    def _handle_create_user(self) -> None:
+        name = Prompt.get_input("Name: ")
+        username = Prompt.get_input("Username: ")
+        password = Prompt.get_input("Password: ")
+
+        def action():
+            self.controller.create_user(name, username, password)
+            self.flash_message = Menu.user_created_message()
+
+        self._execute(action)
 
     # READ
 
