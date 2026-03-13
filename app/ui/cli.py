@@ -71,7 +71,7 @@ class CLI:
             case 2:
                 self._handle_create_user()
             case 3:
-                pass
+                self._handle_list_all_users()
             case 4:
                 pass
             case 5:
@@ -140,6 +140,11 @@ class CLI:
         self._execute(action)
 
     # READ
+
+    def _handle_list_all_users(self) -> None:
+        users = self.controller.list_all_users()
+        users_list = "".join([Menu.show_user_description(user) for user in users])
+        self.flash_message = f"\n{users_list}\n"
 
     # UPDATE
 
