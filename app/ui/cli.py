@@ -42,10 +42,10 @@ class CLI:
         match choice:
 
             case 0:
-                pass
+                self.shutdown_app()
 
             case 1:
-                pass
+                self._handle_login()
 
     def _handle_user_flow(self) -> None:
         choice = Prompt.get_choice([0, 1])
