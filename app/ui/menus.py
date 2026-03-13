@@ -113,6 +113,10 @@ class Menu:
     def role_updated_message() -> str:
         return "Role updated successfully.\n\n"
 
+    @staticmethod
+    def user_activated_message() -> str:
+        return "User activated successfully.\n\n"
+
     ## DELETE
 
     @staticmethod
