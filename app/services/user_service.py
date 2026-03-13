@@ -106,6 +106,9 @@ class UserService:
         if not new_name:
             raise InvalidNameError("Invalid name")
 
+        if user.name == new_name:
+            raise InvalidNameError("New name cannot be the same as current")
+
         data = {"name": new_name}
         self.user_repository.update_by_id(user_id, data)
 
