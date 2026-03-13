@@ -67,6 +67,9 @@ class AppController:
     def deactivate_user(self, user_id: int) -> None:
         self.user_service.deactivate_user_by_id(user_id)
 
+    def reset_login_attempts(self, user_id: int) -> None:
+        self.user_service.reset_login_attempts_by_id(user_id)
+
     # DELETE
 
     def delete_user(self, user_id: int) -> None:
