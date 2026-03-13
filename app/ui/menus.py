@@ -1,5 +1,3 @@
-from turtle import st
-
 from app.models.user import User
 
 
@@ -36,8 +34,9 @@ class Menu:
             "2 - Update username\n"
             "3 - Update password\n"
             "4 - Change role\n"
-            "5 - Activate/Deactivate\n"
-            "6 - Reset login attempts\n"
+            "5 - Reset login attempts\n"
+            "6 - Activate user\n"
+            "7 - Deactivate user\n"
             "0 - Cancel\n"
         )
 
