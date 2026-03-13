@@ -53,7 +53,7 @@ class CLI:
         match choice:
 
             case 0:
-                pass
+                self._handle_logout()
             case 1:
                 pass
 
@@ -63,7 +63,7 @@ class CLI:
         match choice:
 
             case 0:
-                pass
+                self._handle_logout()
             case 1:
                 pass
             case 2:
