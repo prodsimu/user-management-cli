@@ -8,26 +8,26 @@ class Prompt:
             try:
                 choice = int(input("Choose an option: "))
                 if choice not in valid_options:
-                    print("\nChoose a valid option\n")
+                    print("\nChoose a valid option.\n")
             except ValueError:
-                print("\nChoose a valid option\n")
+                print("\nChoose a valid option.\n")
 
         return choice
 
     @staticmethod
-    def _get_input(prompt_message: str) -> str:
+    def get_input(prompt_message: str) -> str:
         user_input = input(prompt_message).strip()
 
         while not user_input:
-            print("\nInput cannot be empty\n")
+            print("\nInput cannot be empty.\n")
             user_input = input(prompt_message).strip()
 
         return user_input
 
     @staticmethod
-    def ask_username() -> str:
-        return Prompt.get_input("Username: ")
-
-    @staticmethod
-    def ask_password() -> str:
-        return Prompt.get_input("Password: ")
+    def get_int_input(prompt_message: str) -> int:
+        while True:
+            try:
+                return int(input(prompt_message))
+            except ValueError:
+                print("\nEnter a valid integer.\n")

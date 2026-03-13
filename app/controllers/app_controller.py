@@ -44,12 +44,36 @@ class AppController:
 
         return None
 
-    def list_users(self) -> list[User]:
-        return self.user_service.list_users()
+    def list_all_users(self) -> list[User]:
+        return self.user_service.list_all_users()
 
     # UPDATE
 
+    def update_password(self, user_id: int, new_password: str) -> None:
+        self.user_service.update_password_by_id(user_id, new_password)
+
+    def update_name(self, user_id: int, new_name: str) -> None:
+        self.user_service.update_name_by_id(user_id, new_name)
+
+    def update_username(self, user_id: int, new_username: str) -> None:
+        self.user_service.update_username_by_id(user_id, new_username)
+
+    def update_role(self, user_id: int, new_role: str) -> None:
+        self.user_service.change_role_by_id(user_id, new_role)
+
+    def activate_user(self, user_id: int) -> None:
+        self.user_service.activate_user_by_id(user_id)
+
+    def deactivate_user(self, user_id: int) -> None:
+        self.user_service.deactivate_user_by_id(user_id)
+
+    def reset_login_attempts(self, user_id: int) -> None:
+        self.user_service.reset_login_attempts_by_id(user_id)
+
     # DELETE
+
+    def delete_user(self, user_id: int) -> None:
+        self.user_service.delete_user_by_id(user_id)
 
     # AUTHENTICATION
 
@@ -63,7 +87,7 @@ class AppController:
 
     def logout(self) -> None:
         if self.current_session:
-            self.session_service.delete_session(self.current_session.id)
+            self.session_service.logout(self.current_session.id)
 
         self.current_session = None
         self.current_user = None

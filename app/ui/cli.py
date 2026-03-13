@@ -17,12 +17,14 @@ class CLI:
 
     def shutdown_app(self) -> None:
         self.running = False
+        clear_screen()
+        print(Menu.shutdown_message())
 
     # MAIN LOOP
 
     def main_loop(self) -> None:
 
-        self.flash_message = Menu.start_app()
+        self.flash_message = Menu.startup_message()
 
         while self.running:
 
@@ -30,6 +32,48 @@ class CLI:
             self._show_flash_message()
 
             print(self._get_current_menu(), end="")
+            self._handle_current_flow()
+
+    # FLOWS
+
+    def _handle_public_flow(self) -> None:
+        choice = Prompt.get_choice([0, 1])
+
+        match choice:
+
+            case 0:
+                self.shutdown_app()
+
+            case 1:
+                self._handle_login()
+
+    def _handle_user_flow(self) -> None:
+        choice = Prompt.get_choice([0, 1])
+
+        match choice:
+
+            case 0:
+                self._handle_logout()
+            case 1:
+                self._handle_update_own_password()
+
+    def _handle_admin_flow(self) -> None:
+        choice = Prompt.get_choice([0, 1, 2, 3, 4, 5])
+
+        match choice:
+
+            case 0:
+                self._handle_logout()
+            case 1:
+                self._handle_create_user()
+            case 2:
+                self._handle_list_all_users()
+            case 3:
+                self._handle_update_user_flow()
+            case 4:
+                self._handle_delete_user()
+            case 5:
+                self._handle_update_own_password()
 
     # MAIN LOOP ACTIONS
 
@@ -48,44 +92,29 @@ class CLI:
         else:
             return Menu.user_menu()
 
-    # FLOWS
+    def _handle_current_flow(self) -> None:
+        if not self.controller.has_active_session():
+            self._handle_public_flow()
+        elif self.controller.is_admin():
+            self._handle_admin_flow()
+        else:
+            self._handle_user_flow()
 
-    def _handle_public_flow(self) -> None:
-        choice = Prompt.get_choice([0, 1])
+    # AUTHENTICATION
 
-        match choice:
+    def _handle_login(self) -> None:
+        username = Prompt.get_input("Username: ")
+        password = Prompt.get_input("Password: ")
 
-            case 0:
-                pass
+        def action():
+            self.controller.login(username, password)
+            self.flash_message = Menu.logged_in_message()
 
-            case 1:
-                pass
+        self._execute(action)
 
-    def _handle_user_flow(self) -> None:
-        choice = Prompt.get_choice([0, 1])
-
-        match choice:
-
-            case 0:
-                pass
-            case 1:
-                pass
-
-    def _handle_admin_flow(self) -> None:
-        choice = Prompt.get_choice([0, 1, 2, 3, 4])
-
-        match choice:
-
-            case 0:
-                pass
-            case 1:
-                pass
-            case 2:
-                pass
-            case 3:
-                pass
-            case 4:
-                pass
+    def _handle_logout(self) -> None:
+        self.flash_message = Menu.logout_message()
+        self.controller.logout()
 
     # HELPER
 
@@ -94,3 +123,164 @@ class CLI:
             action()
         except Exception as e:
             self.flash_message = Menu.show_error(str(e))
+
+    # CREATE
+
+    def _handle_create_user(self) -> None:
+        name = Prompt.get_input("Name: ")
+        username = Prompt.get_input("Username: ")
+        password = Prompt.get_input("Password: ")
+
+        def action():
+            self.controller.create_user(name, username, password)
+            self.flash_message = Menu.user_created_message()
+
+        self._execute(action)
+
+    # READ
+
+    def _handle_list_all_users(self) -> None:
+        users = self.controller.list_all_users()
+        users_list = "".join([Menu.show_user_description(user) for user in users])
+        self.flash_message = f"\n{users_list}\n"
+
+    # UPDATE
+
+    def _handle_update_own_password(self) -> None:
+
+        def action():
+            new_password = Prompt.get_input("New password: ")
+            confirm_password = Prompt.get_input("Confirm new password: ")
+
+            if new_password != confirm_password:
+                self.flash_message = Menu.password_do_not_match_message()
+                return
+
+            self.controller.update_password(
+                self.controller.current_user.id, new_password
+            )
+            self.flash_message = Menu.password_updated_message()
+
+        self._execute(action)
+
+    def _handle_update_name(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            new_name = Prompt.get_input("New name: ")
+            self.controller.update_name(user_id, new_name)
+            self.flash_message = Menu.name_updated_message()
+
+        self._execute(action)
+
+    def _handle_update_username(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            new_username = Prompt.get_input("New username: ")
+            self.controller.update_username(user_id, new_username)
+            self.flash_message = Menu.username_updated_message()
+
+        self._execute(action)
+
+    def _handle_update_password(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            new_password = Prompt.get_input("New password: ")
+            confirm_password = Prompt.get_input("Confirm new password: ")
+
+            if new_password != confirm_password:
+                self.flash_message = Menu.password_do_not_match_message()
+                return
+
+            self.controller.update_password(user_id, new_password)
+            self.flash_message = Menu.password_updated_message()
+
+        self._execute(action)
+
+    def _handle_update_role(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+
+            if self.controller.current_user.id == user_id:
+                self.flash_message = Menu.show_error("You cannot change your own role.")
+                return
+
+            new_role = Prompt.get_input("New role: ")
+            self.controller.update_role(user_id, new_role)
+            self.flash_message = Menu.role_updated_message()
+
+        self._execute(action)
+
+    def _handle_activate_user(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            self.controller.activate_user(user_id)
+            self.flash_message = Menu.user_activated_message()
+
+        self._execute(action)
+
+    def _handle_deactivate_user(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            self.controller.deactivate_user(user_id)
+            self.flash_message = Menu.user_deactivated_message()
+
+        self._execute(action)
+
+    def _handle_reset_login_attempts(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            self.controller.reset_login_attempts(user_id)
+            self.flash_message = Menu.login_attempts_reset_message()
+
+        self._execute(action)
+
+    # UPDATE FLOW
+
+    def _handle_update_user_flow(self) -> None:
+        clear_screen()
+
+        print(Menu.update_user_menu(), end="")
+
+        choice = Prompt.get_choice([0, 1, 2, 3, 4, 5, 6, 7])
+
+        match choice:
+
+            case 0:
+                return
+            case 1:
+                self._handle_update_name()
+            case 2:
+                self._handle_update_username()
+            case 3:
+                self._handle_update_password()
+            case 4:
+                self._handle_update_role()
+            case 5:
+                self._handle_reset_login_attempts()
+            case 6:
+                self._handle_activate_user()
+            case 7:
+                self._handle_deactivate_user()
+
+    # DELETE
+
+    def _handle_delete_user(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+
+            if self.controller.current_user.id == user_id:
+                self.flash_message = Menu.show_error("You cannot delete your own user.")
+                return
+
+            self.controller.delete_user(user_id)
+            self.flash_message = Menu.user_deleted_message()
+
+        self._execute(action)

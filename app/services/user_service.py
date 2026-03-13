@@ -81,7 +81,7 @@ class UserService:
 
         return self.user_repository.get_by_field("username", username)
 
-    def list_users(self) -> List[User]:
+    def list_all_users(self) -> List[User]:
         return self.user_repository.get_all()
 
     def list_active_users(self) -> List[User]:
@@ -106,6 +106,9 @@ class UserService:
         if not new_name:
             raise InvalidNameError("Invalid name")
 
+        if user.name == new_name:
+            raise InvalidNameError("New name cannot be the same as current")
+
         data = {"name": new_name}
         self.user_repository.update_by_id(user_id, data)
 
@@ -122,6 +125,9 @@ class UserService:
 
         if not new_username:
             raise InvalidUsernameError("Invalid username")
+
+        if user.username == new_username:
+            raise InvalidUsernameError("New username cannot be the same as current")
 
         if self.user_repository.exists_by_field("username", new_username):
             raise UsernameAlreadyExistsError("User already exists")
