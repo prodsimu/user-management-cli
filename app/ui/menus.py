@@ -117,6 +117,10 @@ class Menu:
     def user_activated_message() -> str:
         return "User activated successfully.\n\n"
 
+    @staticmethod
+    def user_deactivated_message() -> str:
+        return "User deactivated successfully.\n\n"
+
     ## DELETE
 
     @staticmethod
