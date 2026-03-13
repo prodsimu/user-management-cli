@@ -100,3 +100,7 @@ class Menu:
     @staticmethod
     def user_deleted_message() -> str:
         return "User deleted successfully.\n\n"
+
+    @staticmethod
+    def name_updated_message() -> str:
+        return "Name updated successfully.\n\n"
