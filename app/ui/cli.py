@@ -218,6 +218,15 @@ class CLI:
 
         self._execute(action)
 
+    def _handle_deactivate_user(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            self.controller.deactivate_user(user_id)
+            self.flash_message = Menu.user_deactivated_message()
+
+        self._execute(action)
+
     # DELETE
 
     def _handle_delete_user(self) -> None:
