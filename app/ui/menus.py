@@ -58,6 +58,10 @@ class Menu:
     def logout_message() -> str:
         return "Exiting session..."
 
+    @staticmethod
+    def logged_in_message() -> str:
+        return "Logged in successfully."
+
     # ERROR MESSAGES
 
     @staticmethod
