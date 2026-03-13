@@ -78,7 +78,6 @@ class Menu:
     @staticmethod
     def show_user_description(user: User) -> str:
         return (
-            "\n------------------------------\n"
             f"ID ----------- {user.id}\n"
             f"Name --------- {user.name}\n"
             f"Username ----- {user.username}\n"
