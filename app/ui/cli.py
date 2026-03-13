@@ -173,6 +173,16 @@ class CLI:
 
         self._execute(action)
 
+    def _handle_update_username(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            new_username = Prompt.get_input("New username: ")
+            self.controller.update_username(user_id, new_username)
+            self.flash_message = Menu.username_updated_message()
+
+        self._execute(action)
+
     # DELETE
 
     def _handle_delete_user(self) -> None:
