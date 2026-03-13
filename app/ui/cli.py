@@ -17,6 +17,8 @@ class CLI:
 
     def shutdown_app(self) -> None:
         self.running = False
+        clear_screen()
+        print(Menu.shutdown_message())
 
     # MAIN LOOP
 
