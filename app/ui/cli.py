@@ -71,7 +71,7 @@ class CLI:
             case 3:
                 self._handle_list_all_users()
             case 4:
-                self._handle_update_password()
+                self._handle_update_role()
             case 5:
                 self._handle_delete_user()
 
@@ -196,6 +196,16 @@ class CLI:
 
             self.controller.update_password(user_id, new_password)
             self.flash_message = Menu.password_updated_message()
+
+        self._execute(action)
+
+    def _handle_update_role(self) -> None:
+
+        def action():
+            user_id = Prompt.get_int_input("User ID: ")
+            new_role = Prompt.get_input("New role: ")
+            self.controller.update_role(user_id, new_role)
+            self.flash_message = Menu.role_updated_message()
 
         self._execute(action)
 
