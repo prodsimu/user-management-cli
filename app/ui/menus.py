@@ -93,3 +93,7 @@ class Menu:
     @staticmethod
     def password_updated_message() -> str:
         return "Password updated successfully.\n\n"
+
+    @staticmethod
+    def user_created_message() -> str:
+        return "User created successfully.\n\n"
