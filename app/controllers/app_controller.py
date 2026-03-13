@@ -52,6 +52,9 @@ class AppController:
     def update_password(self, user_id: int, new_password: str) -> None:
         self.user_service.update_password_by_id(user_id, new_password)
 
+    def update_name(self, user_id: int, new_name: str) -> None:
+        self.user_service.update_name_by_id(user_id, new_name)
+
     # DELETE
 
     def delete_user(self, user_id: int) -> None:
