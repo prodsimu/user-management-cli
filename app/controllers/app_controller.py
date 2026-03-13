@@ -55,6 +55,9 @@ class AppController:
     def update_name(self, user_id: int, new_name: str) -> None:
         self.user_service.update_name_by_id(user_id, new_name)
 
+    def update_username(self, user_id: int, new_username: str) -> None:
+        self.user_service.update_username_by_id(user_id, new_username)
+
     # DELETE
 
     def delete_user(self, user_id: int) -> None:
